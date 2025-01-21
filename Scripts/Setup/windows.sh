@@ -44,6 +44,7 @@ $QEMU \
     -usb -device usb-mouse \
     -device usb-kbd \
     -drive if=pflash,format=raw,readonly=on,file=$FIRMWARE \
-    -drive if=pflash,format=raw,file=$VARIABLE_STORE
+    -drive if=pflash,format=raw,file=$VARIABLE_STORE \
+    $GUI_OPTION
 
 echo "Windows VM set up"

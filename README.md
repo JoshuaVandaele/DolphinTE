@@ -20,6 +20,8 @@ DolphinTE (or Dolphin Test Environment) is a personal project used to test my ch
 
 1. You can then SSH into it using `ssh.sh`.
 
+You may use the `--gui` flag to be able to interact with the virtual machine through a GUI.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.

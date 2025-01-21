@@ -11,4 +11,5 @@ $QEMU \
     -device usb-kbd \
     -drive if=pflash,format=raw,readonly=on,file=$FIRMWARE \
     -drive if=pflash,format=raw,file=$VARIABLE_STORE \
-    -nic user,hostfwd=tcp::10022-:10022
+    -nic user,hostfwd=tcp::10022-:10022 \
+    $GUI_OPTION

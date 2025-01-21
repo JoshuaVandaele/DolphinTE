@@ -1,4 +1,5 @@
-. Scripts/dependencies.sh
+. Scripts/Common/dependencies.sh
+source Scripts/Common/argparse.sh
 
 cd Scripts/Run
 for file in "../Constants/*"; do
