@@ -738,7 +738,7 @@ $scripts = @(
 		$authorized_keys | Add-Content -Path $env:ProgramData\ssh\administrators_authorized_keys
 		icacls $HOME\.ssh\authorized_keys /inheritance:r /grant:r "$($env:USERNAME):(F)"
 		icacls $env:ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant:r "$($env:USERNAME):(F)"
-		("Port 10022`n" + Get-Content -Raw $env:ProgramData\ssh\sshd_config) | Set-Content $env:ProgramData\ssh\sshd_config
+		("Port 10022`n" + (Get-Content -Raw $env:ProgramData\ssh\sshd_config)) | Set-Content $env:ProgramData\ssh\sshd_config
 	};
 	{
 		(Get-AppxProvisionedPackage -Online -LogLevel Warnings | Where-Object -Property DisplayName -EQ Microsoft.DesktopAppInstaller).InstallLocation -replace '%SYSTEMDRIVE%', $env:SystemDrive | Add-AppxPackage -Register -DisableDevelopmentMode
