@@ -1,0 +1,4 @@
+Disks/*.img
+Data/ISO/*.iso
+Firmware/OVMF*
+dolphin/
