@@ -114,7 +114,10 @@ check_for_help "$@"
 parse_args "$@"
 
 if [[ $gui == "true" ]]; then
-    GUI_OPTION="-display sdl"
+    GUI_OPTION="-display sdl \
+    -audiodev pipewire,id=audiodev1 \
+    -device intel-hda \
+    -device hda-duplex,audiodev=audiodev1"
 else
     GUI_OPTION="-nographic"
 fi
