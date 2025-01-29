@@ -5,4 +5,4 @@ DISK_SIZE="50G"
 MEMORY="4G"
 CPUS="4"
 
-ANSWER_FILE="../../Data/autounattend.xml"
+ANSWER="../../Data/Unattend"

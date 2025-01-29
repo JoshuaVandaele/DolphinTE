@@ -7,7 +7,7 @@ PATCHED_ISO_PATH="$(dirname "$ISO_PATH")/unattend-$(basename "$ISO_PATH")"
 TEMP_ISO_DIR=$(mktemp -d)
 
 7z x -y "$ISO_PATH" -o"$TEMP_ISO_DIR"
-cp $ANSWER_FILE $TEMP_ISO_DIR
+cp -fr "$ANSWER/." "$TEMP_ISO_DIR"
 
 rm -f $PATCHED_ISO_PATH
 
