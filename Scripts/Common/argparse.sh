@@ -119,7 +119,9 @@ if [[ $gui == "true" ]]; then
     -device intel-hda \
     -device hda-duplex,audiodev=audiodev1"
 else
-    GUI_OPTION="-nographic"
+    GUI_OPTION="-nographic \
+    -serial none \
+    -monitor none"
 fi
 
 export GUI_OPTION

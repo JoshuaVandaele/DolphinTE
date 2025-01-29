@@ -47,4 +47,8 @@ $QEMU \
     -drive if=pflash,format=raw,file=$VARIABLE_STORE \
     $GUI_OPTION
 
-echo "Windows VM set up"
+if [ $? -eq 0 ]; then
+    echo "Windows VM set up"
+else
+    echo "An error occured while setting up the Windows VM!"
+fi
