@@ -32,6 +32,7 @@ function SetupSSH {
     Prepend-ToFile "Port 10022" "$env:ProgramData\ssh\sshd_config"
     $authorized_keys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCa89hPd0mxguYGSVhnqz2HcRkohbiYNPl+ibbdlOnxx5/w9cCDQWCaipBTC8FZAXv2bBkdgL0nzRoEL7r7F/zvYjR2FqPkLGCsDypiOS94R2CDiRTXgzo7v1AadgCLgMe3VBph78qaEiMu3buMexN/QF0VUE2rfBtDLZaOSrteWAygXALZp7frWtpQodDNkYM0K3LSvWjNG5HDPXagyNYjeSos1z/8zi0Su+syo0qjkuJY5GSBV4s6TgNJAOt9CFzTp/Q3Uts7UoL7tqUuw4W/+hf+ITErZ8NyxIQyUMH8yZEt2PQGToBwlPrshqoq3ftYQrPAVqHrason8TnYCLHToiOwkYrzoa3YCusUL/HYeUGHdocFS++nBG22ANpAOeD+h7UQliiCzRhPt2oph8vTIJ/LeSnosf3F05Nl6AXzjhTvQ5mko16xOTxq8OW3QTk3hWsmGJwlJb5zne8XQ4MWiHgeNq0iwJ5EiVHkQPgTd8Z9pzjc54iMMKR+zmYacWc= Unsecure key for use with guests. DO NOT EXPOSE THEIR SSH PORTS TO THE INTERNET, EVER"
     $authorized_keys | Add-Content -Path "$env:ProgramData\ssh\administrators_authorized_keys"
+
     $acl = Get-Acl "$env:ProgramData\ssh\administrators_authorized_keys"
     $acl.SetAccessRuleProtection($true, $false)
     $administratorsRule = New-Object system.security.accesscontrol.filesystemaccessrule("Administrators","FullControl","Allow")
@@ -39,6 +40,8 @@ function SetupSSH {
     $acl.SetAccessRule($administratorsRule)
     $acl.SetAccessRule($systemRule)
     $acl | Set-Acl
+
+    New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\Setup\SSHShell.bat" -PropertyType String -Force
 }
 
 function InstallWinget {
