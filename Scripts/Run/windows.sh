@@ -1,5 +1,7 @@
 . ../Constants/windows.sh
 
+USB_ARGS=$(../Common/usbparse.sh ../../usb_devices.conf)
+
 $QEMU \
     -enable-kvm \
     -m "$MEMORY" \
@@ -12,4 +14,5 @@ $QEMU \
     -drive if=pflash,format=raw,readonly=on,file=$FIRMWARE \
     -drive if=pflash,format=raw,file=$VARIABLE_STORE \
     -nic user,hostfwd=tcp::10022-:10022 \
+    $USB_ARGS \
     $GUI_OPTION
