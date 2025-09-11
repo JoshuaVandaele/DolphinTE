@@ -1,4 +1,4 @@
-. Scripts/Common/dependencies.sh
+. Scripts/Common/ensure-dependencies.sh
 source Scripts/Common/argparse.sh
 
 cd Scripts/Run
