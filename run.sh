@@ -1,6 +1,9 @@
 . Scripts/Common/ensure-dependencies.sh
 source Scripts/Common/argparse.sh
 
+USB_ARGS=$(Scripts/Common/usbparse.sh usb_devices.conf)
+QEMU="$QEMU $USB_ARGS"
+
 cd Scripts/Run
 for file in "../Constants/*"; do
     . $file

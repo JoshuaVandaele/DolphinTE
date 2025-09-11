@@ -107,21 +107,21 @@ check_for_help() {
     done
 }
 
-define_arg "gui" "" "Enable GUI" "store_true" "false"
+define_arg "nogui" "" "Enable GUI" "store_true" "false"
 
 check_for_help "$@"
 
 parse_args "$@"
 
-if [[ $gui == "true" ]]; then
+if [[ $nogui == "true" ]]; then
+    GUI_OPTION="-nographic \
+    -serial none \
+    -monitor none"
+else
     GUI_OPTION="-display sdl \
     -audiodev pipewire,id=audiodev1 \
     -device intel-hda \
     -device hda-duplex,audiodev=audiodev1"
-else
-    GUI_OPTION="-nographic \
-    -serial none \
-    -monitor none"
 fi
 
 export GUI_OPTION
