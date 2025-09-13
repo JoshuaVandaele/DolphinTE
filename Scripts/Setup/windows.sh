@@ -1,10 +1,18 @@
-#!/bin/bash
-
-. ../Constants/windows.sh
+SETUP_DIR="$(realpath $(dirname "${BASH_SOURCE[0]}"))"
+. $SETUP_DIR/../Constants/windows.sh
 
 PATCHED_ISO_PATH="$(dirname "$ISO_PATH")/unattend-$(basename "$ISO_PATH")"
 
 TEMP_ISO_DIR=$(mktemp -d)
+ISO_FILE_SIZE=$(stat -c%s "$ISO_PATH")
+
+AVAILABLE_SPACE=$(df --output=avail -B1 "$TEMP_ISO_DIR" | tail -n 1)
+if [ "$AVAILABLE_SPACE" -lt "$ISO_FILE_SIZE" ]; then
+    echo "Not enough space in temporary directory $TEMP_ISO_DIR.">&2
+    echo "need $ISO_FILE_SIZE bytes" >&2
+    echo "have $AVAILABLE_SPACE bytes.">&2
+    exit 1
+fi
 
 7z x -y "$ISO_PATH" -o"$TEMP_ISO_DIR"
 cp -fr "$ANSWER/." "$TEMP_ISO_DIR"

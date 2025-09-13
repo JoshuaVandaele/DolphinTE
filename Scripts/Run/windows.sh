@@ -1,4 +1,5 @@
-. ../Constants/windows.sh
+RUN_DIR="$(realpath $(dirname "${BASH_SOURCE[0]}"))"
+. $RUN_DIR/../Constants/windows.sh
 
 $QEMU \
     -enable-kvm \

@@ -8,23 +8,34 @@ DolphinTE (or Dolphin Test Environment) is a personal project used to test my ch
 - edk2's OVMF
 - cdrtools
 - p7zip
-- A Windows 11 ISO
+- ISO file of supported operating system
+
+### Usually installed requirements
+
+- bash
+- util-linux
+- GNU coreutils
+- SSH client
 
 ## Usage
 
-1. Put your Windows 11 iso inside `Data/ISO` under the name `windows.iso`.
+1. Put your isos inside `Data/ISO`.
 
-2. Launch `setup.sh` to automatically create the test environment.
+2. Run `dolphinte.sh --setup <OSes>` to create and set up new virtual machine(s).
 
-3. Once setup has completed, launch `run.sh` to run the virtual machine.
+3. Run `dolphinte.sh <OSes>` to start the virtual machine(s).
 
-4. You can then SSH into it using `ssh.sh`.
+4. You can then SSH into them using `ssh.sh`.
 
-5. If you want to add a remote repository, use `add-remote.sh` with the remote name and URL as arguments.
+5. If you want to add a remote repository in the running VMs, use `add-remote.sh <Remote> <URL>`.
 
-6. If you want to build Dolphin, you can use `build.sh` with the remote name and branch as arguments.
+6. If you want to build Dolphin in the running VMs, you can use `build.sh <Remote> <URL>`.
 
-You may use the `--gui` flag to be able to interact with the virtual machine through a GUI.
+You may use the `--nogui` flag to run QEMU without a graphical interface.
+
+## Supported Operating Systems
+
+- Windows 11
 
 ## License
 

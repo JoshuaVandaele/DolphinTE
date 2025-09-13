@@ -9,12 +9,10 @@ if [ -z "$REMOTE" ] || [ -z "$BRANCH" ]; then
     exit 1
 fi
 
-./ssh.sh <<EOF
-git fetch "$REMOTE"
-git checkout "$REMOTE/$BRANCH"
-rmdir /s /q build
-mkdir build
-cd build
-cmake .. -GNinja
-ninja
-EOF
+./ssh.sh "git fetch $REMOTE" \
+    "git checkout $REMOTE/$BRANCH" \
+    "rmdir /s /q build" \
+    "mkdir build" \
+    "cd build" \
+    "cmake .. -GNinja" \
+    "ninja"
